@@ -1,0 +1,11 @@
+<div>
+    <div [ngClass]="{tuning:true}">
+        <div [ngClass]="{label:true}">Логин: </div>
+        <input type="text" [value]="login" (input)="loginChange($event)" placeholder="Логин"/><br />
+    </div>   
+    <div [ngClass]="{tuning:true}">
+        <div [ngClass]="{label:true}">Пароль: </div> 
+        <input type="text" [value]="pass" (input)="passChange($event)" placeholder="Пароль" /><br />
+    </div>    
+    <button (click)="doLogin()">Login</button>
+</div>

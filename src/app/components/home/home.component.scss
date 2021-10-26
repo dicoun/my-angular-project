@@ -1,0 +1,24 @@
+::ng-deep body,
+::ng-deep html {
+  height: 98%;
+  margin: 5px;
+}
+.label {
+    width: 100px;
+}
+.tuning {
+    display: flex;
+    margin: 5px;
+}
+button {
+    margin: 10px 10px 10px 0;
+}
+canvas {
+    width: 100%;
+    height:fit-content;
+    border-style: solid;
+}
+.alert {
+    color: red;
+    margin-left: 5px;;
+}
