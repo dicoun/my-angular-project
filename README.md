@@ -6,4 +6,4 @@
 * /login
 * /home
 * /profile
-/home && /profile are available only to authenticated users
+###### /home && /profile are available only to authenticated users
