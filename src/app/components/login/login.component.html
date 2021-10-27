@@ -7,5 +7,5 @@
         <div [ngClass]="{label:true}">Пароль: </div> 
         <input type="text" [value]="pass" (input)="passChange($event)" placeholder="Пароль" /><br />
     </div>    
-    <button (click)="doLogin()">Login</button>
+    <button [ngClass]="{login:true}" (click)="doLogin()">Login</button>
 </div>

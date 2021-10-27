@@ -5,13 +5,13 @@ import { HomeComponent }   from 'src/app/components/home/home.component';
 import { LoginComponent }   from 'src/app/components/login/login.component';
 import { ProfileComponent }   from 'src/app/components/profile/profile.component';
 
-import { HomeGuard }   from './guards/home.guard';
-import { ProfileGuard }   from './guards/profile.guard';
+import { LoginGuard }   from './guards/login.guard';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [HomeGuard]},
+    { path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
     { path: 'login', component: LoginComponent},
-    { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] }
+    { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard]},
+    { path: '', component: HomeComponent, canActivate: [LoginGuard]}
 ];
 
 @NgModule({

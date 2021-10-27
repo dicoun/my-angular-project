@@ -4,7 +4,7 @@ import {Observable, BehaviorSubject} from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class StorageService {
     
-  private dataSubject: BehaviorSubject<string> = new BehaviorSubject('Initial');
+  private dataSubject: BehaviorSubject<string> = new BehaviorSubject('');
   data$: Observable<string> = this.dataSubject.asObservable();
 
   setData(newValue: string) {

@@ -1,34 +1,35 @@
 <div>
-    <h3>Генерация и отрисовка гауссовой кривой</h3>
-    <div [ngClass]="{tuning:true}">
-        <div [ngClass]="{label:true}">Шаг, min: </div>
-        <input [(ngModel)]="curve.step_l" name="step_l" #step_l="ngModel" placeholder="Шаг-L" required pattern="^[0-9]+(\.[0-9]+)?$"/>
-        <div [hidden]="step_l.valid || step_l.untouched" [ngClass]="{alert:true}">
-            Введите вещественное число.    
+    <header-comp></header-comp>
+    <div [ngClass]="{form:true}">
+        <div [ngClass]="{tuning:true}">
+            <div [ngClass]="{label:true}">Шаг, min: </div>
+            <input [(ngModel)]="curve.step_l" name="step_l" #step_l="ngModel" placeholder="Шаг-L" required pattern="^[0-9]+(\.[0-9]+)?$"/>
+            <div [hidden]="step_l.valid || step_l.untouched" [ngClass]="{alert:true}">
+                Введите вещественное число.    
+            </div>
         </div>
-    </div>
-    <div [ngClass]="{tuning:true}">
-        <div [ngClass]="{label:true}">Шаг, max: </div>
-        <input [(ngModel)]="curve.step_u" name="step_u" #step_u="ngModel" placeholder="Шаг-U" required pattern="^[0-9]+(\.[0-9]+)?$"/>
-        <div [hidden]="step_u.valid || step_u.untouched" [ngClass]="{alert:true}">
-            Введите вещественное число.    
+        <div [ngClass]="{tuning:true}">
+            <div [ngClass]="{label:true}">Шаг, max: </div>
+            <input [(ngModel)]="curve.step_u" name="step_u" #step_u="ngModel" placeholder="Шаг-U" required pattern="^[0-9]+(\.[0-9]+)?$"/>
+            <div [hidden]="step_u.valid || step_u.untouched" [ngClass]="{alert:true}">
+                Введите вещественное число.    
+            </div>
         </div>
-    </div>
-    <div [ngClass]="{tuning:true}">
-        <div [ngClass]="{label:true}">Высота: </div>
-        <input [(ngModel)]="curve.height" name="height" #height="ngModel" placeholder="Высота-H" required pattern="^[0-9]+(\.[0-9]+)?$"/>
-        <div [hidden]="height.valid || height.untouched" [ngClass]="{alert:true}">
-            Введите вещественное число.    
+        <div [ngClass]="{tuning:true}">
+            <div [ngClass]="{label:true}">Высота: </div>
+            <input [(ngModel)]="curve.height" name="height" #height="ngModel" placeholder="Высота-H" required pattern="^[0-9]+(\.[0-9]+)?$"/>
+            <div [hidden]="height.valid || height.untouched" [ngClass]="{alert:true}">
+                Введите вещественное число.    
+            </div>
         </div>
-    </div>
-    <div [ngClass]="{tuning:true}">
-        <div [ngClass]="{label:true}">Количество точек: </div>
-        <input [(ngModel)]="curve.points_amount" name="points_amount" #points_amount="ngModel" placeholder="Количество точек-K" required pattern="^[0-9]+$"/>
-        <div [hidden]="points_amount.valid || points_amount.untouched" [ngClass]="{alert:true}">
-            Введите целое число.    
+        <div [ngClass]="{tuning:true}">
+            <div [ngClass]="{label:true}">Количество точек: </div>
+            <input [(ngModel)]="curve.points_amount" name="points_amount" #points_amount="ngModel" placeholder="Количество точек-K" required pattern="^[0-9]+$"/>
+            <div [hidden]="points_amount.valid || points_amount.untouched" [ngClass]="{alert:true}">
+                Введите целое число.    
+            </div>
         </div>
     </div>
     <button [disabled]="step_l.invalid || step_u.invalid || height.invalid || points_amount.invalid" (click)="doGenerate()">Generate curve!</button>
-    <button (click)="doLogout()">Logout</button>
 </div>
 <canvas #canvas><canvas>

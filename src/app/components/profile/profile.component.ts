@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
   
 @Component({
     selector: 'profile-app',
@@ -8,11 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent { 
     username:string = '';
-    constructor(private router: Router){
-        this.username = <string>localStorage.getItem('login');
-    }
-    doLogout(){
-        localStorage.clear();
-        this.router.navigate(['login']);
+    constructor(private router: Router, private auth: AuthService){
+        this.username = <string>auth.getCredentials().login;
     }
 }

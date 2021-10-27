@@ -15,10 +15,14 @@ button {
 }
 canvas {
     width: 100%;
-    height:fit-content;
+    height:80%;
     border-style: solid;
 }
 .alert {
     color: red;
     margin-left: 5px;;
+}
+.form {
+    margin-top: 10px;
+    //height: 20%;
 }
