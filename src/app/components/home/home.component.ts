@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     step_u = 0;
     height = 0;
     points_amount = 0;
-   // curve:Curve|undefined;   
     curve:CurveModel = new CurveModel(this.step_l, this.step_u, this.height, this.points_amount); 
     subscription: Subscription|undefined;
     data:string = '';
@@ -33,11 +32,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.router.navigate(['login']);
     }
     public doGenerate(){
-       // this.curve = new Curve(this.step_l, this.step_u, this.height, this.points_amount);     
         let newCurve = this.curve;
         this.httpService.postData(newCurve)
                 .subscribe(
                     (data: any) => {
+                        //можно брать данные о кривой либо из хранилища(текущая реализация),
+                        //либо из HttpResponse
                         let sumArr = JSON.parse(this.data);
                         let arrX = sumArr[0];
                         let arrY = sumArr[1];
