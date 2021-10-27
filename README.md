@@ -1,8 +1,8 @@
-### This is test project on Angular (Gaussian Curve Generation). 
-Credentials:
+### This is a test project on Angular (Gaussian Curve Generation). 
+###### Credentials:
 * login: admin;
-* pass: 12345; 
-Project has 3 pages:
+* pass: 12345;  
+###### Project has 3 pages:
 * /login
 * /home
 * /profile
