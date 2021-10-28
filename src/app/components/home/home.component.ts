@@ -40,12 +40,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 let h = sumArr[4];
                 this.ctx && this.ctx.beginPath();
                 this.ctx && (this.ctx.strokeStyle = 'blue');
-                //направить ось Y вверх, по умолчанию направлена вниз
-                //this.ctx && (this.ctx.setTransform(1,0,0,-1,0,h));
                 //масштабирование координат кривой в соответствие с размерами канваса(в пикселях)
-                this.ctx && canvasWidth && canvasHeight && this.ctx.moveTo(arrX[0]*canvasWidth/(u-l), arrY[0]*canvasHeight/h);
+                this.ctx && canvasWidth && canvasHeight && this.ctx.moveTo(arrX[0]*canvasWidth/(u-l), canvasHeight-arrY[0]*canvasHeight/h);
                 for(let i=0; i<arrX.length; i++){
-                    this.ctx && canvasWidth && canvasHeight && this.ctx.lineTo(arrX[i]*canvasWidth/(u-l), arrY[i]*canvasHeight/h);
+                    this.ctx && canvasWidth && canvasHeight && this.ctx.lineTo(arrX[i]*canvasWidth/(u-l), canvasHeight-arrY[i]*canvasHeight/h);
                 };
                 this.ctx && this.ctx.stroke();
             }
@@ -56,32 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.httpService.postData(newCurve)
                 .subscribe(
                     (data: any) => {
-                        //рассчет координат точек кривой, сохранение данных в хранилище
-                        let randomNumber=(min:number, max:number)=>{
-                            return Math.random() * (max - min) + min;
-                        }
-                        let a = randomNumber(0,this.curve.height);
-                        let b = randomNumber(this.curve.step_l,this.curve.step_u);
-                        let c = (this.curve.step_l-this.curve.step_u)/100;
-                        let arrXX = Array(0);
-                        let arrYY = [];
-                        let delX = (this.curve.step_u-this.curve.step_l)/(this.curve.points_amount-1);
-                        let currX = 0;
-                        for(let i=1; i<=this.curve.points_amount; i++){
-                            let x:number, y:number;
-                            x = currX;
-                            y = a*Math.exp((-1)*(Math.pow((x-b), 2))/(2*Math.pow(c,2)));
-                            arrXX.push(x);
-                            if((y == Infinity) || (y > this.curve.height)){
-                                arrYY.push(this.curve.height);
-                            }
-                            else{
-                                arrYY.push(y);
-                            }
-                            currX += delX;
-                        }
-                        let sumDataArr = [arrXX, arrYY, this.curve.step_l, this.curve.step_u, this.curve.height, a, b, c]; 
-                        this.storage.setData(JSON.stringify(sumDataArr));
+                        this.storage.setData(JSON.stringify(data.sumDataArr));
                     }
                 );
     }
